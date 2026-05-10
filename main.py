@@ -13,8 +13,8 @@ import smtplib
 import datetime as dt
 from pathlib import Path
 
-my_email = "porivaldovidro@gmail.com"
-password = "egkfojhwszqkmcfs"
+MY_EMAIL = os.environ.get("MY_EMAIL")
+MY_PASSWORD = os.environ.get("MY_PASSWORD")
 birthdays_file = pd.read_csv('birthdays.csv')
 birthdays = birthdays_file.to_dict('records')
 now = dt.datetime.now()
@@ -32,7 +32,7 @@ for date in birthdays:
                 message = message + line
         with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
             smtp.starttls()
-            smtp.login(user=my_email, password=password)
+            smtp.login(user=MY_EMAIL, password=MY_PASSWORD)
             smtp.sendmail(
                 from_addr=my_email,
                 to_addrs=date['email'],
