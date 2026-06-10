@@ -9,10 +9,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6 # Atualizado de @v4 para @v6 (Suporta Node 24)
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6 # Atualizado de @v5 para @v6 (Suporta Node 24)
         with:
           python-version: '3.12'
 
